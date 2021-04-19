@@ -28,6 +28,8 @@ osp_networks:
     admin_state: yes
     ip_version: 4
     enable_dhcp: yes
+    dns_nameservers: 
+      - "8.8.8.8"
 
   # Public Facing Router connecting the two networks
 osp_router:

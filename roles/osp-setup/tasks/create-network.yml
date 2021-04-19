@@ -23,7 +23,6 @@
     allocation_pool_end: "{{ item.value.allocation_pool_end | default(omit) }}"
     dns_nameservers:
       - 8.8.8.8
-      - 8.8.8.7
   with_dict: "{{ osp_networks }}"
 
 - name: Create Router
@@ -37,3 +36,6 @@
     interfaces:
       - "{{ item.value.interfaces }}"
   with_dict: "{{ osp_router }}"
+
+tags:
+    - openstack-networks
