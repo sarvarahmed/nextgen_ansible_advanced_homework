@@ -1,7 +1,8 @@
-- hosts: workstation
+- name: Playbook Role to provision 3tier APP  
+  hosts: workstation
   gather_facts: true
   roles:
-  - name: osp-facts
+  - name: osp-facts #Role to provision  3tier APP and  used by the job templates
 
 # Setup front-end load balancer tier
 
