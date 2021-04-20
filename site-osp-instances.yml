@@ -1,6 +1,6 @@
 - name: Playbook to provision the QA Environment 
   hosts: all
-  connection: local
+#  connection: local
   become: no
   gather_facts: true
   roles:
