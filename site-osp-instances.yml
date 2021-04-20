@@ -5,4 +5,4 @@
   gather_facts: true
   roles:
    - osp-setup   #ROle to provision QA Network and Security groups 
-   - osp-servers #Role to provision the QA instances
+#   - osp-servers #Role to provision the QA instances
