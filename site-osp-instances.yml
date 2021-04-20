@@ -1,7 +1,8 @@
-- name: Playbook to provision the QA Environment
+- name: Playbook to provision the QA Environment 
   hosts: localhost
   connection: local
   become: no
   gather_facts: true
   roles:
-   - osp-servers #Role to provision the QA and used by the job template "Provision QA Environment"
+   - osp-setup   #ROle to provision QA Network and Security groups 
+   - osp-servers #Role to provision the QA instances
