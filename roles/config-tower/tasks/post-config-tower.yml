@@ -8,8 +8,9 @@
     scm_type: git
     scm_url: "{{ scm_url }}" 
     tower_host: tower1.{{tower_GUID}}.example.opentlc.com
-    tower_username: "{{ _tower_user_name }}"
-    tower_password: "{{ _tower_password }}"
+#    tower_username: "{{ _tower_user_name }}"
+#    tower_password: "{{ _tower_password }}"
+    tower_config_file: "~/.tower_cli.cfg"
     tower_verify_ssl: no
 
 - name: Machine Credentail to connect to workstation using openstack.pub
@@ -19,8 +20,9 @@
     state: present
     kind: ssh
     tower_host: tower1.{{tower_GUID}}.example.opentlc.com
-    tower_username: "{{ _tower_user_name }}"
-    tower_password: "{{ _tower_password }}"
+#    tower_username: "{{ _tower_user_name }}"
+#    tower_password: "{{ _tower_password }}"
+    tower_config_file: "~/.tower_cli.cfg"
     ssh_key_data: "/root/.ssh/openstack.pem"
     username: cloud-user
 
@@ -40,8 +42,9 @@
     inventory: "{{static_inventory_name}}"
     state: present
     tower_host: tower1.{{tower_GUID}}.example.opentlc.com
-    tower_username: "{{ _tower_user_name }}"
-    tower_password: "{{ _tower_password }}"
+#    tower_username: "{{ _tower_user_name }}"
+#    tower_password: "{{ _tower_password }}"
+    tower_config_file: "~/.tower_cli.cfg"
     tower_verify_ssl: no
 
 - name: Associate workstation host to group 
@@ -56,8 +59,9 @@
     state: present
     kind: ssh
     tower_host: tower1.{{tower_GUID}}.example.opentlc.com
-    tower_username: "{{ _tower_user_name }}"
-    tower_password: "{{ _tower_password }}"
+#    tower_username: "{{ _tower_user_name }}"
+#    tower_password: "{{ _tower_password }}"
+    tower_config_file: "~/.tower_cli.cfg"
     tower_verify_ssl: no
     ssh_key_data: /root/.ssh/openstack.pem
     username: "{{ opentlc_login }}"
