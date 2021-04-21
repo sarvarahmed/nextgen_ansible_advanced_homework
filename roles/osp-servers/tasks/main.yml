@@ -5,9 +5,9 @@
   os_server:
     cloud: openstack
     name: "{{ _instance.instance_name }}"
-    image: rhel-7.6
-    key_name: ansible_ssh_key
-    flavor: m2.medium
+    image: rhel-guest
+    key_name: ansible_ssh
+    flavor: m1.medium
     security_groups: "{{ _instance.security_group_name  }}"
     delete_fip: yes
     wait: no

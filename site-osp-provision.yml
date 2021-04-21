@@ -1,6 +1,0 @@
-- name: Playbook to provision QA environment on Openstack
-  hosts: localhost
-  gather_facts: false 
-  become: yes 
-  roles:
-    - osp-setup
