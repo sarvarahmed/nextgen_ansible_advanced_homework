@@ -8,7 +8,7 @@
     image: rhel-guest
     key_name: ansible_ssh
     flavor: m1.medium
-    security_groups: "{{ _instance.security_group_name  }}"
+    security_groups: "{{ _instance.security_group  }}"
     delete_fip: yes
     wait: no
     nics:
