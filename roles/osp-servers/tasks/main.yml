@@ -1,7 +1,7 @@
 ---
 
 # tasks file for osp.servers
-- name: Create app1 instance
+- name: Create OSP instances
   os_server:
     cloud: openstack
     name: "{{ _instance.instance_name }}"
@@ -18,7 +18,7 @@
       #!/bin/bash
       curl -o /tmp/openstack.pub http://www.opentlc.com/download/ansible_bootcamp/openstack_keys/openstack.pub
       cat /tmp/openstack.pub >> /home/cloud-user/.ssh/authorized_keys
-  loop: "{{ openstack_instances }}"
+  loop: "{{ osp_servers }}"
   loop_control:
      loop_var: _instance
 
@@ -31,6 +31,6 @@
     network: ext_network
     wait: true
     timeout: 200
-  loop: "{{ openstack_instances }}"
+  loop: "{{ osp_servers }}"
   loop_control:
        loop_var: _instance
