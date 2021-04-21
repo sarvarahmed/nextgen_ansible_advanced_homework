@@ -9,10 +9,10 @@
     scm_url: "{{ scm_url }}" 
     scm_clean: True
     scm_delete_on_update: True
+    scm_update_on_launch: True
     tower_host: tower1.{{tower_GUID}}.example.opentlc.com
     tower_username: "{{ _tower_user_name }}"
     tower_password: "{{ _tower_password }}"
-#    tower_config_file: "~/.tower_cli.cfg"
     tower_verify_ssl: no
 
 - name: Machine Credentail to connect to workstation using openstack.pub
@@ -24,7 +24,6 @@
     tower_host: tower1.{{tower_GUID}}.example.opentlc.com
     tower_username: "{{ _tower_user_name }}"
     tower_password: "{{ _tower_password }}"
-#    tower_config_file: "~/.tower_cli.cfg"
     ssh_key_data: "/root/.ssh/openstack.pem"
     username: cloud-user
 
@@ -46,7 +45,6 @@
     tower_host: tower1.{{tower_GUID}}.example.opentlc.com
     tower_username: "{{ _tower_user_name }}"
     tower_password: "{{ _tower_password }}"
-#    tower_config_file: "~/.tower_cli.cfg"
     tower_verify_ssl: no
 
 - name: Associate workstation host to group 
@@ -63,7 +61,6 @@
     tower_host: tower1.{{tower_GUID}}.example.opentlc.com
     tower_username: "{{ _tower_user_name }}"
     tower_password: "{{ _tower_password }}"
-#    tower_config_file: "~/.tower_cli.cfg"
     tower_verify_ssl: no
     ssh_key_data: /root/.ssh/openstack.pem
     username: "{{ opentlc_login }}"
