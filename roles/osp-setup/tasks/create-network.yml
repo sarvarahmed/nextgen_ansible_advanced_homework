@@ -37,5 +37,3 @@
       - "{{ item.value.interfaces }}"
   with_dict: "{{ osp_router }}"
 
-tags:
-    - openstack-networks
