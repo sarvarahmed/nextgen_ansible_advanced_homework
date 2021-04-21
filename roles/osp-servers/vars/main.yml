@@ -9,7 +9,7 @@ osp_servers:
   - instance_name: app1
     security_group: apps
     group: apps 
-    deploymente: QA
+    deployment: QA
 
   - instance_name: app2
     security_group: apps
