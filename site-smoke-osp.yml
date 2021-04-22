@@ -66,4 +66,4 @@
         - "{{ groups.frontends  }}" 
     - name: Fail if 'Not Alive is not webpage'
       fail:
-      when: "'Alive' not in results.content"
+      when: "'Alive' not in result.content"
