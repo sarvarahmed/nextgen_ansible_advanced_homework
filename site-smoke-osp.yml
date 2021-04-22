@@ -1,26 +1,22 @@
 ---
-- name: Fetch Instance Info
-     os_server_info:
-      cloud: openstack
-     register: result
+- name: Gather OSP Server facts
+  hosts: workstation
+  tasks:
+    - name: Fetch Instance Info
+      os_server_info:
+        cloud: openstack
+      register: result
 
-   - debug:
-       var: result
+    - debug:
+        var: result
 
-   - name: Add host
-     add_host:
-      name: "{{ item.public_v4 }}"
-      group: "{{ item.metadata.group }}"
-      # ansible_ssh_private_key_file: ~/.ssh/openstack.pem
-      # ansible_ssh_user: cloud-user
-     with_items: "{{result.openstack_servers}}"
-   - name: Add host
-     add_host:
-      name: "{{ item.public_v4 }}"
-      group: "{{ item.metadata.deployment_name }}"
-      #      ansible_ssh_private_key_file: ~/.ssh/openstack.pem
-      #  ansible_ssh_user: cloud-user
-     with_items: "{{result.openstack_servers}}"
+    - name: Add host
+      add_host:
+        name: "{{ item.public_v4 }}"
+        group: "{{ item.metadata.group }}"
+        #ansible_ssh_private_key_file: ~/.ssh/openstack.pem
+        #ansible_ssh_user: cloud-user
+      with_items: "{{result.openstack_servers}}"
 
 - name: End to end smoke tests
   hosts: apps:appdbs
@@ -36,8 +32,8 @@
 #          - "IP is {{ hostvars['appdb1']['ansible_default_ipv4']['address'] }}"
           - "First App server  {{ groups.apps[0] }}" 
           - "Second App server {{ groups.apps[1] }}"
-          - "Frontend Server "{{ groups.frontend[0] }}"
-          - "DB Server "{{ groups.appdbs[0] }}"
+          - "Frontend Server {{ groups.frontend[0] }}"
+          - "DB Server {{ groups.appdbs[0] }}"
         verbosity: 2        
 
 
