@@ -62,8 +62,8 @@
       retries: 10
       delay: 1
       register: result
-      with_items:
-        - "{{ groups.frontends  }}" 
-    - name: Fail if 'Not Alive is not webpage'
+      with_items: "{{ groups.frontends  }}" 
+
+    - name: Fail if Alive is not in webpage
       fail:
       when: "'Alive' not in result.content"
