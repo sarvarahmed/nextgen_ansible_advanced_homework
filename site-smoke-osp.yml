@@ -30,6 +30,16 @@
     - debug:
         msg: "First App server  {{ groups.apps[0] }},Second App server {{ groups.apps[1] }},Frontend Server {{ groups.frontends[0] }},DB Server {{ groups.appdbs[0] }}"
 
+    - name: Smoketest Postgres database
+      postgresql_ping:
+        db: flask_db
+        login_host: "{{ groups.appdbs[0]  }}"
+        login_user: flask
+        login_password: redhat
+        ssl_mode: disable
+      delegate_to: "{{ groups.apps[0] }}"
+      run_once: true    
+
 #- hosts: workstation
 #  gather_facts: false
 #  tasks:
