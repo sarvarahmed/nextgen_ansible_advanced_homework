@@ -66,8 +66,8 @@
  
     - debug:
         msg: "{{ item.content }}"
+      with_items:  "{{ result_webpage.results }}"
 
-      with_items:  result_webpage.results
     - name: Fail if Alive is not in webpage
       fail:
       when: "'aalive' not in item.content"
