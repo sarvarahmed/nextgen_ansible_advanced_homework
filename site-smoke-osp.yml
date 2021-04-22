@@ -32,7 +32,7 @@
 #          - "IP is {{ hostvars['appdb1']['ansible_default_ipv4']['address'] }}"
           - "First App server  {{ groups.apps[0] }}" 
           - "Second App server {{ groups.apps[1] }}"
-          - "Frontend Server {{ groups.frontend[0] }}"
+          - "Frontend Server {{ groups.frontends[0] }}"
           - "DB Server {{ groups.appdbs[0] }}"
         verbosity: 2        
 
