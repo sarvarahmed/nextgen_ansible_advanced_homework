@@ -4,6 +4,10 @@
      os_server_info:
       cloud: openstack
      register: result
+
+   - debug:
+       var: result 
+
    - name: Add host
      add_host:
       name: "{{ item.public_v4 }}"
