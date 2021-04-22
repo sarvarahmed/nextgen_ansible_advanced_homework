@@ -17,18 +17,20 @@
         #ansible_ssh_private_key_file: ~/.ssh/openstack.pem
         #ansible_ssh_user: cloud-user
       with_items: "{{result.openstack_servers}}"
+  
+    - debug:
+        msg: "APP - {{ item  }}"
+      with_items: "{{ groups.apps }}" 
 
-- name: End to end smoke tests
+- name: APPs Server to Database connectivity smoke tests
   hosts: apps:appdbs
   gather_facts: true
   become: true
   tags:
     - smoketest  
-
   tasks:
-
-    - debug:
-        msg: "First App server  {{ groups.apps[0] }},Second App server {{ groups.apps[1] }},Frontend Server {{ groups.frontends[0] }},DB Server {{ groups.appdbs[0] }}"
+#    - debug:
+#        msg: "First App server  {{ groups.apps[0] }},Second App server {{ groups.apps[1] }},Frontend Server {{ groups.frontends[0] }},DB Server {{ groups.appdbs[0] }}"
 
     - name: Smoketest Postgres database
       postgresql_ping:
@@ -40,11 +42,20 @@
       delegate_to: "{{ groups.apps[0] }}"
       run_once: true    
 
-#- hosts: workstation
-#  gather_facts: false
-#  tasks:
-#  - name: OpenStack servers
-#  - name: Curl website
+
+
+- name: Check webserver response
+  hosts: workstation
+  gather_facts: false
+  tasks:
+    - name: Curl website to check response
+      uri:
+        url: "http://{{ groups.frontends[0] }}/ping"
+        return_content: yes
+      until: '"alive" in result.content'
+      retries: 10
+      delay: 1
+      register: result
 
 #  - name: Fail if 'Ansible has done its job' is not in the page content
 #    fail:
