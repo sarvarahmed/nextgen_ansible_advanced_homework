@@ -65,7 +65,7 @@
       with_items: "{{ groups.frontends  }}" 
  
     - debug:
-        var: result_webpage.results.content 
+        var: result_webpage.results['content']
 
     - name: Fail if Alive is not in webpage
       fail:
