@@ -69,4 +69,5 @@
 
     - name: Fail if Alive is not in webpage
       fail:
-      when: "'alive' not in result_webpage.results.content"
+      when: "'alive' not in item.content"
+      with_items: "{{ result_webpage.results }}"
