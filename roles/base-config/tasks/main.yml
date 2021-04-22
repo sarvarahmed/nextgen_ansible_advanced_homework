@@ -8,7 +8,21 @@
     replace: 'Defaults  !requiretty'
     backup: yes
 
-- name: enable repos
+- name: Get internal repo file
+  get_url:
+    url: "{{ internal_repo_path  }}"
+    dest: "{{ role_path }}/files/internal.repo"
+    mode: 0755
+  delegate_to: localhost
+
+- name: Copy internal repo file
+  copy: 
+    src: "{{ role_path }}/files/internal.repo"
+    dest: /etc/yum.repos.d/internal.repo
+    owner: root
+    group: root
+    mode: 0755  
+
  
-- name: install base tools and packages
+#- name: install base tools and packages
 

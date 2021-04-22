@@ -1,5 +1,4 @@
 ---
-
 - name: start {{ payload }}
   service:
     name: tomcat
