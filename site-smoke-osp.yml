@@ -65,9 +65,10 @@
       with_items: "{{ groups.frontends  }}" 
  
     - debug:
-        var: result_webpage.results['content']
+        msg: "{{ item.content }}"
 
+      with_items:  result_webpage.results
     - name: Fail if Alive is not in webpage
       fail:
-      when: "'alive' not in item.content"
+      when: "'aalive' not in item.content"
       with_items: "{{ result_webpage.results }}"
