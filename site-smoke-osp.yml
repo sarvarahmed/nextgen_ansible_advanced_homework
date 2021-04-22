@@ -58,12 +58,15 @@
       uri:
         url: "http://{{ item }}/ping"
         return_content: yes
-      until: '"alive" in result.content'
+      until: '"alive" in result_webpage.content'
       retries: 10
       delay: 1
-      register: result
+      register: result_webpage
       with_items: "{{ groups.frontends  }}" 
+ 
+    - debug:
+        var: result_webpage 
 
-    - name: Fail if Alive is not in webpage
-      fail:
-      when: "'Alive' not in result.content"
+#    - name: Fail if Alive is not in webpage
+#      fail:
+#      when: "'Alive' not in result.content"
