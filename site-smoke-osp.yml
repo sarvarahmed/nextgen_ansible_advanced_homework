@@ -20,7 +20,7 @@
   
     - debug:
         msg: "Frontend: {{ item.0  }},APP - {{ item.1 }},DB: {{ item.2 }}"
-      with_together: 
+      with_nested: 
         - "{{ groups.frontends }}" 
         - "{{ groups.apps }}" 
         - "{{ groups.appdbs }}" 
