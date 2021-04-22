@@ -8,12 +8,12 @@
 #    replace: 'Defaults  !requiretty'
 #    backup: yes
 
-- name: Get internal repo file
-  get_url:
-    url: "{{ internal_repo_path  }}"
-    dest: "{{ role_path }}/files/internal.repo"
-    mode: 0755
-  delegate_to: localhost
+#- name: Get internal repo file
+#  get_url:
+#    url: "{{ internal_repo_path  }}"
+#    dest: "{{ role_path }}/files/internal.repo"
+#    mode: 0755
+#  delegate_to: localhost
 
 - name: Copy internal repo file
   copy: 
