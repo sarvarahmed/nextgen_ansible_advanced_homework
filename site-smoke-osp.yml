@@ -19,9 +19,12 @@
       with_items: "{{result.openstack_servers}}"
   
     - debug:
-        msg: "APP - {{ item  }}"
-      with_items: "{{ groups.apps }}" 
-
+        msg: "Frontend: {{ item.0  }},APP - {{ item.1 }},DB: {{ item.2 }}"
+      with_together: 
+        - "{{ groups.frontends }}" 
+        - "{{ groups.apps }}" 
+        - "{{ groups.appdbs }}" 
+      
 - name: APPs Server to Database connectivity smoke tests
   hosts: apps:appdbs
   gather_facts: true
