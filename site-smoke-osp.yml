@@ -28,23 +28,7 @@
   tasks:
 
     - debug:
-        msg: 
-#          - "IP is {{ hostvars['appdb1']['ansible_default_ipv4']['address'] }}"
-          - "First App server  {{ groups.apps[0] }}" 
-          - "Second App server {{ groups.apps[1] }}"
-          - "Frontend Server {{ groups.frontends[0] }}"
-          - "DB Server {{ groups.appdbs[0] }}"
-        verbosity: 2        
-
-
-
-
-
-
-
-
-
-
+        msg: "First App server  {{ groups.apps[0] }},Second App server {{ groups.apps[1] }},Frontend Server {{ groups.frontends[0] }},DB Server {{ groups.appdbs[0] }}"
 
 #- hosts: workstation
 #  gather_facts: false
