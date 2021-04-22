@@ -1,5 +1,4 @@
 ---
----
 - name: Create flask user
   user:
     name: "{{ flask_user }}"
