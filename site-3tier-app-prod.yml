@@ -13,7 +13,7 @@
   gather_facts: true
   tasks:
     - debug:
-        msg: "Frontend: {{ item.0  }},APP - {{ item.1 }},DB: {{ item.2 }}"
+        msg: "Internal_IP: hostvars[item.0][ansible_default_ipv4][address]"
       with_nested:
         - "{{ groups.frontends }}"
         - "{{ groups.apps }}"
