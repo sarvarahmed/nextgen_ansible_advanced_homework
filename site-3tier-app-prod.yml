@@ -13,7 +13,7 @@
   gather_facts: true
   tasks:
     - debug:
-        msg: "Internal_IP: {{ hostvars[item][ansible_default_ipv4][address] }}"
+        msg: "Internal_IP: {{ hostvars[item][ansible_default_ipv4].address }}"
       loop: "{{ groups.tag_AnsibleGroup_apps }}"
 
 #- name: setup database tier for prod env
