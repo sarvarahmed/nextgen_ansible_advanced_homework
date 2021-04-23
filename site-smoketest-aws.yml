@@ -1,4 +1,6 @@
-- hosts: frontends
+---
+- name: Smoke Test For AWS Prod Environment 
+  hosts: tag_AnsibleGroup_frontends
   gather_facts: false
   tasks:
   - name: Curl website
