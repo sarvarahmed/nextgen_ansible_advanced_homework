@@ -13,9 +13,8 @@
   gather_facts: true
   tasks:
     - debug:
-        msg: "Internal_IP: hostvars[item.0][ansible_default_ipv4][address]"
-      with_nested:
-        - "{{ groups.tag_AnsibleGroup_apps }}"
+        msg: "Internal_IP: {{ hostvars[item][ansible_default_ipv4][address] }}"
+      loop: "{{ groups.tag_AnsibleGroup_apps }}"
 
 #- name: setup database tier for prod env
 #  become: yes
