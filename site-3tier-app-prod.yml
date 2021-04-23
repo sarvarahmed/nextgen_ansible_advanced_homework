@@ -6,34 +6,52 @@
 
 # Setup database tier
 
-- name: setup database tier for prod env
-  become: yes
-  hosts: appdbs
-  roles:
-    - {name: base-config, tags: base-config}
-    - {name: db-tier-prod, tags: [dbs_prod, postgres_prod]}
+
+
+- name: Gather facts to get internal IPs of the servers
+  hosts: appdbs:apps:frontends
+  gather_facts: true
+  tasks:
+    - debug:
+        msg: "Frontend: {{ item.0  }},APP - {{ item.1 }},DB: {{ item.2 }}"
+      with_nested:
+        - "{{ groups.frontends }}"
+        - "{{ groups.apps }}"
+        - "{{ groups.appdbs }}"
+ 
+
+
+
+
+#- name: setup database tier for prod env
+#  become: yes
+#  gather_facts: true
+#  hosts: appdbs
+#  roles:
+#    - {name: base-config, tags: base-config}
+#    - {name: db-tier-prod, tags: [dbs_prod, postgres_prod]}
 
 
 # Setup application servers tier
 
-- name: setup app tier for prod env
-  hosts: apps
-  become: yes
-  gather_facts: false
-  roles:
-    - {name: base-config, tags: base-config}
-    - {name: app-tier-prod, tags: [apps_prod, tomcat_prod]}
+#- name: setup app tier for prod env
+#  hosts: apps
+#  become: yes
+#  gather_facts: false
+#  roles:
+#    - {name: base-config, tags: base-config}
+#    - {name: app-tier-prod, tags: [apps_prod, tomcat_prod]}
 
 
 
 # Setup front-end load balancer tier
 
 
-- name: setup load-balancer tier for prod env
-  hosts: frontends
-  become: yes
-  roles:
-    - {name: base-config, tags: base-config}
-    - {name: lb-tier-prod, tags: [lbs_prod, haproxy_prod]}
+#- name: setup load-balancer tier for prod env
+#  hosts: frontends
+#  become: yes
+#  roles:
+#    - {name: base-config, tags: base-config}
+#    - {name: lb-tier-prod, tags: [lbs_prod, haproxy_prod]}
 
 
