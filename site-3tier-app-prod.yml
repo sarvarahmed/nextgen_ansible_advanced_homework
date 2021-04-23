@@ -9,15 +9,13 @@
 
 
 - name: Gather facts to get internal IPs of the servers
-  hosts: apps:appdbs:frontends 
+  hosts: tag_AnsibleGroup_apps  
   gather_facts: true
   tasks:
     - debug:
         msg: "Internal_IP: hostvars[item.0][ansible_default_ipv4][address]"
       with_nested:
-        - "{{ groups.frontends }}"
-        - "{{ groups.apps }}"
-        - "{{ groups.all }}"
+        - "{{ groups.tag_AnsibleGroup_apps }}"
 
 #- name: setup database tier for prod env
 #  become: yes
