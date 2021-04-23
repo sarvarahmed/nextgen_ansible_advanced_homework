@@ -6,7 +6,7 @@
     line: "{{ hostvar[item]['ansible_default_ipv4'].address }} appdb1"
 ##    line: "{{ hostvars['appdb1']['ansible_default_ipv4']['address'] }} appdb1"
     state: present
-  with_ietms: "{{ groups.tag_AnsibleGroup_appdbs  }}"  
+  with_items: "{{ groups.tag_AnsibleGroup_appdbs  }}"  
 
 - name: Create flask user
   user:
