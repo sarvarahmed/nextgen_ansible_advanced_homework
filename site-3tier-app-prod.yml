@@ -19,7 +19,7 @@
 - name: setup database tier for prod env
   become: yes
   gather_facts: true
-  hosts: appdbs
+  hosts: tag_AnsibleGroup_appdbs
   roles:
     - {name: base-config, tags: base-config}
     - {name: db-tier-prod, tags: [dbs_prod, postgres_prod]}
@@ -28,7 +28,7 @@
 # Setup application servers tier
 
 - name: setup app tier for prod env
-  hosts: apps
+  hosts: tag_AnsibleGroup_apps
   become: yes
   gather_facts: false
   roles:
