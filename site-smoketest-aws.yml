@@ -14,5 +14,5 @@
 
   - name: Fail if 'Ansible has done its job' is not in the page content
     fail:
-    when: "'Ping! - I'm alive' not in webpage.content"
+    when: "'alive' not in webpage.content"
 
