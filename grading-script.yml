@@ -20,20 +20,22 @@
       cloud: openstack
       server: 'frontend'
     register: openstack_info
-  
+  - debug:
+      var: openstack_info
+ 
   - name: Check if all osp instance exist
     debug: "{{ openstack_info.openstack_servers | length }}"
     register: osp_instance
 
   - debug: var=osp_instance
 
-
+  
   - name: Access website
     uri:
       url: "http://{{ item.public_v4 }}"
       status_code: 200
       return_content: yes
-    when: 'item.hostname == "frontend"'
+    when: 'item.name == "frontend"'
     loop: "{{ openstack_info.openstack_servers }}"
     register: qa_webpage
     ignore_errors: yes

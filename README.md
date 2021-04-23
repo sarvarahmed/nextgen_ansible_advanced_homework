@@ -1,7 +1,58 @@
+A brief description of the playbooks and roles elated to AWS PROD Environment goes here.
+========================================================================================
+
+Playbook Name
+=============
+
+
+- aws_creds.yml           -->  Playbook to install ansible-tower-cli on bastion node and cretate AWS Credentials
+- aws_provision.yml       -->  Plabook to provision AWS Prod Environment
+- aws_status_check.yml    -->  Playbook to check the status of the AWS instances
+- site-3tier-app-prod.yml -->  Gather facts to get internal IPs of the servers
+                          -->  Setup database tier for prod env
+                          -->  Setup app tier for prod env
+                          -->  Setup load-balancer tier for prod env
+- site-smoketest-aws.yml  -->  Smoke Test For AWS Prod Environment
+
+
+
 Role Name
 =========
 
-A brief description of the role goes here.
+
+- base-config             -->  Role to Add internal repo to the aws instances
+- app-tier-prod           -->  Role to setup app servers in AWS Prod Environment
+- db-tier-prod            -->  Role to setup db servers in AWS Prod Environment
+- lb-tier-prod            -->  Role to setup frontend servers in AWS Prod Environment
+
+
+
+A brief description of the playbooks and roles elated to OSP QA Environment goes here.
+========================================================================================
+
+Playbook Name
+=============
+
+
+- site-osp-instances.yml  -->  Playbook to provision instances in OSP Environment
+- site-3tier-app.yml      -->  Playbook Role to provision 3tier APP
+                          -->  Setup database tier for QA env
+                          -->  Setup app tier for QA env
+                          -->  Setup load-balancer tier for QA env
+- site-smoke-osp.yml      -->  Smoke Test For osp QA Environment
+
+
+Role Name
+=========
+
+
+- base-config             -->  Role to Add internal repo to the OSP instances
+- app-tier                -->  Role to setup app servers in OSP QA  Environment
+- db-tier                 -->  Role to setup db servers in OSP QA Environment
+- lb-tier                 -->  Role to setup frontend servers in OSP QA Environment
+
+
+
 
 Requirements
 ------------

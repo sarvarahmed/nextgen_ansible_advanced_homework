@@ -1,4 +1,5 @@
-- hosts: all
+- name: Playbook to check the status of the AWS instances
+  hosts: all
   gather_facts: false
   tasks:
   - name: Check the instances status

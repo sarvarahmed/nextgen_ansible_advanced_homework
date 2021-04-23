@@ -1,4 +1,5 @@
-- hosts: tag_AnsibleGroup_bastions
+- name: Playbook to install ansible-tower-cli on bastion node and cretate AWS Credentials 
+  hosts: tag_AnsibleGroup_bastions
   gather_facts: true
   become: true
   tasks:
@@ -15,9 +16,11 @@
     pip:
      name: ansible-tower-cli
      state: latest
+
   - name: List key files
     shell: (cd /root/.ssh; find . -maxdepth 1 -type f -iname '*key.pem')| cut -d'/' -f2
     register: file_to_copy
+
   - name: Tower Creds key file
     tower_credential:
       name: Creds for AWS instances
@@ -30,6 +33,7 @@
       tower_verify_ssl: no
       ssh_key_data: "/root/.ssh/{{ file_to_copy.stdout }}"
       username: ec2-user
+
   - name: Update Prod Job template
     tower_job_template:
       name: "09_3 tier app on Prod"
@@ -42,6 +46,7 @@
       job_type: run
       playbook: site-3tier-app-prod.yml
       project: "00_Homework_Assignment_Project"
+
   - name: Update Prod Smoke Job template
     tower_job_template:
       name: "10_Smoke test Prod env"
