@@ -40,11 +40,11 @@
 # Setup front-end load balancer tier
 
 
-#- name: setup load-balancer tier for prod env
-#  hosts: frontends
-#  become: yes
-#  roles:
-#    - {name: base-config, tags: base-config}
-#    - {name: lb-tier-prod, tags: [lbs_prod, haproxy_prod]}
+- name: setup load-balancer tier for prod env
+  hosts: tag_AnsibleGroup_frontends
+  become: yes
+  roles:
+    - {name: base-config, tags: base-config}
+    - {name: lb-tier-prod, tags: [lbs_prod, haproxy_prod]}
 
 
