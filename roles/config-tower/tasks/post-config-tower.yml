@@ -62,7 +62,7 @@
     tower_username: "{{ _tower_user_name }}"
     tower_password: "{{ _tower_password }}"
     tower_verify_ssl: no
-    ssh_key_data: /root/.ssh/openstack.pem
+    ssh_key_data: "{{ path_to_opentlc_key  }}"
     username: "{{ opentlc_login }}"
 
 - name: Remove secret
