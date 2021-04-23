@@ -1,5 +1,6 @@
-
-- hosts: localhost
+---
+- name: Play to create dynmaic work station inventory 
+  hosts: localhost
   vars:
     OSP_GUID: "{{ lookup('env','OSP_GUID') }}"
     OSP_DOMAIN: "{{ lookup('env','OSP_DOMAIN') }}"
@@ -11,7 +12,8 @@
        group: workstation
        ansible_user: "{{ OPENTLC_ID }}"       
 
-- hosts: workstation
+- name: Play to setup workstation and pre-requisites for OSP instances
+  hosts: workstation
   become: yes
   roles:
     - setup-workstation

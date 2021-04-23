@@ -1,4 +1,5 @@
-- hosts: localhost
+- name: Play to create isolated node group 
+  hosts: localhost
   vars:
     OSP_GUID: "{{ lookup('env','OSP_GUID') }}"
     OSP_DOMAIN: "{{ lookup('env','OSP_DOMAIN') }}"
