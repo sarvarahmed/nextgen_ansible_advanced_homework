@@ -9,7 +9,7 @@
 
 
 - name: Gather facts to get internal IPs of the servers
-  hosts: appdbs:apps:frontends
+  hosts: apps:appdbs:frontends 
   gather_facts: true
   tasks:
     - debug:
@@ -17,7 +17,7 @@
       with_nested:
         - "{{ groups.frontends }}"
         - "{{ groups.apps }}"
-        - "{{ groups.appdbs }}"
+        - "{{ groups.all }}"
 
 #- name: setup database tier for prod env
 #  become: yes
