@@ -41,7 +41,7 @@
       state: present
       job_type: run
       playbook: site-3tier-app.yml
-      project: "00_Homework Assignment"
+      project: "00_Homework_Assignment_Project"
   - name: Update Prod Smoke Job template
     tower_job_template:
       name: "10_Smoke test Prod env"
@@ -53,6 +53,6 @@
       state: present
       job_type: run
       playbook: site-smoketest-aws.yml
-      project: "00_Homework Assignment"
+      project: "00_Homework_Assignment_Project"
 
     
