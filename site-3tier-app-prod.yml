@@ -18,10 +18,6 @@
         - "{{ groups.frontends }}"
         - "{{ groups.apps }}"
         - "{{ groups.appdbs }}"
- 
-
-
-
 
 #- name: setup database tier for prod env
 #  become: yes
